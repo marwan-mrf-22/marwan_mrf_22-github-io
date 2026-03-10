@@ -35,7 +35,6 @@
             overflow-x: hidden;
         }
 
-        /* --- الواجهة الأمامية --- */
         header {
             padding: 30px 20px 10px 20px;
             text-align: center;
@@ -52,7 +51,7 @@
             font-size: 0.7rem;
             background: var(--accent);
             color: white;
-            padding: 2px 8px;
+            padding: 2px 12px;
             border-radius: 10px;
             margin-top: 5px;
             font-weight: bold;
@@ -81,7 +80,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- الأقسام المصممة بشكل زجاجي --- */
         .glass-card {
             background: var(--card-bg);
             backdrop-filter: var(--blur);
@@ -93,137 +91,107 @@
             box-shadow: var(--shadow);
         }
 
-        /* --- الإعدادات --- */
-        .setting-row {
+        /* --- تصميم أزرار التحميل --- */
+        .download-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
         }
 
-        .setting-row:last-child { border: none; }
-
-        /* مفتاح التبديل (Switch) */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 46px;
-            height: 24px;
+        .download-group {
+            border: 1px solid rgba(128, 128, 128, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 10px;
         }
 
-        .switch input { opacity: 0; width: 0; height: 0; }
+        .download-group h4 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            text-align: center;
+        }
 
-        .slider {
-            position: absolute;
+        .download-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
             cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            width: 100%;
+            margin-bottom: 10px;
         }
 
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px; width: 18px;
-            left: 3px; bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
+        .download-btn:last-child {
+            margin-bottom: 0;
         }
 
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- أيقونة Giftway العائمة --- */
+        .giftway-float {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #ff4757;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* بقية التنسيقات */
+        .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(128, 128, 128, 0.1); }
+        .switch { position: relative; display: inline-block; width: 46px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background-color: var(--accent); }
         input:checked + .slider:before { transform: translateX(22px); }
-
-        /* --- الأعمال --- */
-        .empty-state {
-            border: 2px dashed rgba(128, 128, 128, 0.3);
-            border-radius: 15px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: gray;
-            font-style: italic;
-        }
-
-        /* --- الروابط الشخصية --- */
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 12px;
-            margin-top: 10px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .social-link:hover { opacity: 0.9; transform: scale(1.02); }
+        .social-link { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--accent); color: white; text-decoration: none; padding: 14px; border-radius: 12px; margin-top: 10px; font-weight: bold; transition: 0.3s; }
         .social-link.tiktok { background: #000; }
         .social-link.insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-
-        /* --- شريط التنقل السفلي --- */
-        .bottom-nav {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            background: var(--card-bg);
-            backdrop-filter: var(--blur);
-            border-radius: 30px;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-        }
-
-        .nav-item {
-            background: none;
-            border: none;
-            color: var(--text);
-            padding: 10px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            opacity: 0.6;
-        }
-
-        .nav-item.active {
-            background: var(--accent);
-            color: white;
-            opacity: 1;
-        }
-
-        /* --- التوقيع الخاص بك --- */
-        .signature {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.85rem;
-            font-family: serif;
-            opacity: 0.7;
-            letter-spacing: 2px;
-        }
-
+        .bottom-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: var(--card-bg); backdrop-filter: var(--blur); border-radius: 30px; display: flex; justify-content: space-around; padding: 10px; box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.1); z-index: 1000; }
+        .nav-item { background: none; border: none; color: var(--text); padding: 10px 15px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: 0.3s; opacity: 0.6; }
+        .nav-item.active { background: var(--accent); color: white; opacity: 1; }
+        .signature { text-align: center; margin-top: 30px; font-size: 0.85rem; font-family: serif; opacity: 0.7; letter-spacing: 2px; }
         .hide-emojis .emoji { display: none; }
     </style>
 </head>
 <body class="light-theme">
 
+    <div class="giftway-float" onclick="showGiftway()">
+        🎁 <span class="emoji">Giftway</span>
+    </div>
+
     <header>
         <h1 id="main-title">M_EROUFEL <span class="emoji">🛡️</span></h1>
-        <div class="version-badge">1.0.0 beta</div>
+        <div class="version-badge">v.1.0</div>
     </header>
 
     <main id="main-content">
@@ -257,7 +225,23 @@
         <section id="works" class="tab-content">
             <div class="glass-card">
                 <h3 id="work-title">أعمالي <span class="emoji">💻</span></h3>
-                <div id="empty-msg" class="empty-state">لا يوجد شيء هنا حالياً</div>
+                <div class="download-container">
+                    
+                    <div class="download-group">
+                        <h4>GTA San Andreas <span class="emoji">🚗</span></h4>
+                        <button class="download-btn" onclick="secureDownload('GTA SA (APK)', 'https://www.mediafire.com/file/pvzi0fp0906g584/GTA+SA.apk/file?dkey=1cmg3476htm&r=1185')">
+                            تحميل اللعبة (APK) <span class="emoji">📱</span>
+                        </button>
+                        <button class="download-btn" onclick="secureDownload('GTA SA (OBB)', 'https://www.mediafire.com/file/yz3uhvs45a6bvoe/gtasa_OBB_ANDROJUNGLE.COM.zip/file?dkey=6rn2frdhr2u&r=1331#')">
+                            تحميل الملف (OBB) <span class="emoji">📂</span>
+                        </button>
+                    </div>
+
+                    <button class="download-btn" onclick="secureDownload('Honista', 'https://honista.com/')">
+                        تحميل Honista <span class="emoji">📸</span>
+                    </button>
+
+                </div>
             </div>
         </section>
 
@@ -265,122 +249,110 @@
             <div class="glass-card" style="text-align: center;">
                 <h3 id="about-title">عني <span class="emoji">👤</span></h3>
                 <p id="bio-text">مرحباً! أنا مروان، صانع محتوى تقني ومهتم بالبرمجة.</p>
-                
-                <a href="https://marwan_mrf22.github.io" id="site-link" class="social-link" target="_blank">الموقع الرسمي</a>
-                <a href="https://www.tiktok.com/@marwan_mrf_22" class="social-link tiktok" target="_blank">TikTok</a>
+                <a href="https://marwan_mrf-22.github.io" id="site-link" class="social-link" target="_blank">الموقع الرسمي</a>
+                <a href="https://www.tiktok.com/@m.rf0.9" class="social-link tiktok" target="_blank">TikTok</a>
                 <a href="https://www.instagram.com/m.rf0.9" id="insta-link" class="social-link insta" target="_blank">انستجرام</a>
             </div>
         </section>
 
-        <div class="signature">
-            b𝖄 𝕸_•𝕰𝖗𝖔𝖚𝖋𝖊𝖑
-        </div>
+        <div class="signature">b𝖄 𝕸_•𝕰𝖗𝖔𝖚𝖋𝖊𝖑</div>
     </main>
 
     <nav class="bottom-nav">
-        <button id="nav-set" class="nav-item active" onclick="switchTab(event, 'settings')">الإعدادات</button>
-        <button id="nav-work" class="nav-item" onclick="switchTab(event, 'works')">أعمالي</button>
-        <button id="nav-about" class="nav-item" onclick="switchTab(event, 'about')">عني</button>
+        <button id="nav-set" class="nav-item active" onclick="switchTab('settings')">الإعدادات</button>
+        <button id="nav-work" class="nav-item" onclick="switchTab('works')">أعمالي</button>
+        <button id="nav-about" class="nav-item" onclick="switchTab('about')">عني</button>
     </nav>
 
     <script>
-        // --- نظام اللغات المتطور ---
-        const translations = {
-            ar: {
-                mainTitle: "M_EROUFEL 🛡️",
-                setTitle: "الإعدادات ⚙️",
-                darkText: "الوضع الداكن",
-                emojiText: "الرموز التعبيرية (Emoji)",
-                langText: "اللغة",
-                workTitle: "أعمالي 💻",
-                emptyMsg: "لا يوجد شيء هنا حالياً",
-                aboutTitle: "عني 👤",
-                bioText: "مرحباً! أنا مروان، صانع محتوى تقني ومهتم بالبرمجة.",
-                siteLink: "الموقع الرسمي",
-                instaLink: "انستجرام",
-                navSet: "الإعدادات",
-                navWork: "أعمالي",
-                navAbout: "عني"
-            },
-            en: {
-                mainTitle: "M_EROUFEL 🛡️",
-                setTitle: "Settings ⚙️",
-                darkText: "Dark Mode",
-                emojiText: "Emoji Usage",
-                langText: "Language",
-                workTitle: "My Works 💻",
-                emptyMsg: "Nothing here yet",
-                aboutTitle: "About 👤",
-                bioText: "Hello! I'm Marwan, a tech content creator interested in programming.",
-                siteLink: "Official Site",
-                instaLink: "Instagram",
-                navSet: "Settings",
-                navWork: "Works",
-                navAbout: "About"
-            }
-        };
-
-        function updateLanguage(lang) {
-            document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
-            const t = translations[lang];
-            
-            document.getElementById('main-title').innerHTML = t.mainTitle;
-            document.getElementById('set-title').innerHTML = t.setTitle;
-            document.getElementById('dark-text').innerText = t.darkText;
-            document.getElementById('emoji-text').innerText = t.emojiText;
-            document.getElementById('lang-text').innerText = t.langText;
-            document.getElementById('work-title').innerHTML = t.workTitle;
-            document.getElementById('empty-msg').innerText = t.emptyMsg;
-            document.getElementById('about-title').innerHTML = t.aboutTitle;
-            document.getElementById('bio-text').innerText = t.bioText;
-            document.getElementById('site-link').innerText = t.siteLink;
-            document.getElementById('insta-link').innerText = t.instaLink;
-            document.getElementById('nav-set').innerText = t.navSet;
-            document.getElementById('nav-work').innerText = t.navWork;
-            document.getElementById('nav-about').innerText = t.navAbout;
-        }
-
-        // --- إدارة الأقسام ---
-        function switchTab(event, tabId) {
+        // --- 1. وظائف التنقل بين الأقسام ---
+        function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
             
             document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
+            
+            if (tabId === 'settings') document.getElementById('nav-set').classList.add('active');
+            if (tabId === 'works') document.getElementById('nav-work').classList.add('active');
+            if (tabId === 'about') document.getElementById('nav-about').classList.add('active');
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- ميزة الحفظ التلقائي ---
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-theme');
-            darkModeToggle.checked = true;
+        // --- 2. وظائف التحميل والمسابقة ---
+        function secureDownload(name, url) {
+            const confirmMsg = confirm(`هل تود الذهاب إلى الموقع الموثوق لتحميل ${name}؟`);
+            if (confirmMsg) {
+                window.open(url, '_blank');
+            }
         }
 
-        darkModeToggle.addEventListener('change', () => {
-            if (darkModeToggle.checked) {
-                body.classList.add('dark-theme');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.classList.remove('dark-theme');
-                localStorage.setItem('theme', 'light');
+        function showGiftway() {
+            alert("🎁 مسابقة الـ 100 متابع!\n\nالشروط:\n1. متابعة حسابي على انستجرام وتيك توك.\n2. التفاعل مع آخر منشور.\n3. رابح واحد سيحصل على 100 متابع حقيقي!\n\nسيتم السحب قريباً!");
+        }
+
+        // --- 3. نظام الوضع الداكن والرموز ---
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        if (localStorage.getItem('theme') === 'dark') { 
+            document.body.classList.add('dark-theme'); 
+            darkModeToggle.checked = true; 
+        }
+        
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) { 
+                document.body.classList.add('dark-theme'); 
+                localStorage.setItem('theme', 'dark'); 
+            } else { 
+                document.body.classList.remove('dark-theme'); 
+                localStorage.setItem('theme', 'light'); 
             }
         });
 
-        // --- التحكم في الإيموجي ---
         const emojiToggle = document.getElementById('emojiToggle');
-        emojiToggle.addEventListener('change', () => {
-            body.classList.toggle('hide-emojis', !emojiToggle.checked);
+        emojiToggle.addEventListener('change', function() { 
+            document.body.classList.toggle('hide-emojis', !this.checked); 
         });
 
-        // --- تغيير اللغة ---
-        document.getElementById('langSelect').addEventListener('change', (e) => {
-            updateLanguage(e.target.value);
+        // --- 4. نظام اللغات ---
+        const translations = {
+            ar: {
+                mainTitle: "M_EROUFEL 🛡️", setTitle: "الإعدادات ⚙️", darkText: "الوضع الداكن", emojiText: "الرموز التعبيرية (Emoji)",
+                langText: "اللغة", workTitle: "أعمالي 💻", aboutTitle: "عني 👤", bioText: "مرحباً! أنا مروان، صانع محتوى تقني ومهتم بالبرمجة.",
+                siteLink: "الموقع الرسمي", instaLink: "انستجرام", navSet: "الإعدادات", navWork: "أعمالي", navAbout: "عني"
+            },
+            en: {
+                mainTitle: "M_EROUFEL 🛡️", setTitle: "Settings ⚙️", darkText: "Dark Mode", emojiText: "Emoji Usage",
+                langText: "Language", workTitle: "My Works 💻", aboutTitle: "About 👤", bioText: "Hello! I'm Marwan, a tech content creator interested in programming.",
+                siteLink: "Official Site", instaLink: "Instagram", navSet: "Settings", navWork: "Works", navAbout: "About"
+            }
+        };
+
+        function setTextSafe(id, text) {
+            const el = document.getElementById(id);
+            if (el) el.innerHTML = text;
+        }
+
+        document.getElementById('langSelect').addEventListener('change', function(e) { 
+            const lang = e.target.value;
+            document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
+            const t = translations[lang];
+            
+            setTextSafe('main-title', t.mainTitle);
+            setTextSafe('set-title', t.setTitle);
+            setTextSafe('dark-text', t.darkText);
+            setTextSafe('emoji-text', t.emojiText);
+            setTextSafe('lang-text', t.langText);
+            setTextSafe('work-title', t.workTitle);
+            setTextSafe('about-title', t.aboutTitle);
+            setTextSafe('bio-text', t.bioText);
+            setTextSafe('site-link', t.siteLink);
+            setTextSafe('insta-link', t.instaLink);
+            setTextSafe('nav-set', t.navSet);
+            setTextSafe('nav-work', t.navWork);
+            setTextSafe('nav-about', t.navAbout);
         });
     </script>
 </body>
 </html>
-
-
+  
