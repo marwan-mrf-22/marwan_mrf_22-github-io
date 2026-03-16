@@ -358,8 +358,8 @@ input[type=range]{width:82px;height:3px;border-radius:10px;background:var(--bg4)
 
       <!-- STATS -->
       <div class="ng">
-        <div class="nc"><div class="nc-n">02</div><div class="nc-l">ألعاب متاحة</div></div>
-        <div class="nc"><div class="nc-n">02</div><div class="nc-l">تطبيقات</div></div>
+        <div class="nc"><div class="nc-n">04</div><div class="nc-l">ألعاب متاحة</div></div>
+        <div class="nc"><div class="nc-n">04</div><div class="nc-l">تطبيقات</div></div>
         <div class="nc"><div class="nc-n" style="color:var(--yw);">VIP</div><div class="nc-l">عضوية قريباً</div></div>
         <div class="nc"><div class="nc-n" style="color:var(--gn);font-size:.85rem;">V2</div><div class="nc-l">Update V2</div></div>
       </div>
@@ -396,6 +396,26 @@ input[type=range]{width:82px;height:3px;border-radius:10px;background:var(--bg4)
         </div>
       </div>
 
+      <div class="bk">
+          <div class="bk-hd"><div class="bk-t">🔥 Free Fire: Lost Treasure</div><span class="chip chip-or">1.26.1</span></div>
+          <div class="bk-bd" style="padding:10px 13px;">
+            <a href="https://an1.com/7291-supreme-duelist-stickman-mod.html" class="act hl">
+              <div class="act-l"><div class="act-ic" style="background:rgba(255,107,43,.13);">⬇</div><div><div>تحميل اللعبة</div><div class="act-sub">Android 4.0.3+</div></div></div>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><path d="m15 18-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+
+      <div class="bk">
+          <div class="bk-hd"><div class="bk-t">📦 APKMirror</div><span class="chip chip-bl">مصدر موثوق</span></div>
+          <div class="bk-bd" style="padding:10px 13px;">
+            <a href="https://www.apkmirror.com" class="act hl">
+              <div class="act-l"><div class="act-ic" style="background:rgba(56,189,248,.1);">🌐</div><div><div>APKMirror</div><div class="act-sub">أمان APKs — بدون إعلانات</div></div></div>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><path d="m15 18-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+
       <div id="TA" style="display:none;">
         <a href="https://honista.com/" class="act hl">
           <div class="act-l"><div class="act-ic" style="background:rgba(188,24,136,.13);">📸</div><div><div>Honista</div><div class="act-sub">Instagram معدّل</div></div></div>
@@ -405,6 +425,24 @@ input[type=range]{width:82px;height:3px;border-radius:10px;background:var(--bg4)
           <div class="act-l"><div class="act-ic" style="background:rgba(99,102,241,.15);">🌙</div><div><div>Sleep Tracker Pro</div><div class="act-sub">تتبع جودة النوم</div></div></div>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><path d="m15 18-6-6 6-6"/></svg>
         </a>
+        <a href="https://t.wemuslim.com/isqygDdQ" class="act hl">
+          <div class="act-l"><div class="act-ic" style="background:rgba(16,185,129,.15);">🕌</div><div><div>WeMuslim</div><div class="act-sub">أذان • قبلة • قرآن • مواقيت</div></div></div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><path d="m15 18-6-6 6-6"/></svg>
+        </a>
+      </div>
+
+      <!-- Islamic Widget -->
+      <div class="bk hl-gn" style="margin-top:4px;">
+        <div class="bk-hd"><div class="bk-t">🌙 أوقات الصلاة — سيدي بلعباس</div><span class="chip chip-gn" id="hijri-date">جاري...</span></div>
+        <div class="bk-bd" style="padding:10px 14px;">
+          <div class="row"><span class="rk">الفجر</span><span class="rv g">5:48 AM</span></div>
+          <div class="row"><span class="rk">الشروق</span><span class="rv g" id="pt-shuruq">—</span></div>
+          <div class="row"><span class="rk">الظهر</span><span class="rv g" id="pt-zuhr">—</span></div>
+          <div class="row"><span class="rk">العصر</span><span class="rv g" id="pt-asr">—</span></div>
+          <div class="row"><span class="rk">المغرب</span><span class="rv g" id="pt-maghrib">—</span></div>
+          <div class="row"><span class="rk">العشاء</span><span class="rv g" id="pt-isha">—</span></div>
+          <div class="row" style="border-bottom:none;"><span class="rk">الاستغفار</span><span class="chip chip-gn" id="istighfar-chip">كل 10 دقائق 🤲</span></div>
+        </div>
       </div>
     </div>
 
@@ -727,8 +765,50 @@ function toggleMode(el){
   try{if(localStorage.getItem('mrfMode')==='light'){document.body.classList.add('light');var t=document.getElementById('modeToggle');if(t)t.classList.remove('on');}}catch(e){}
 })();
 
+
+// ── استغفرالله كل 10 دقائق ──
+function showIstighfar(){
+  // إنشاء div الإشعار
+  var d=document.createElement('div');
+  d.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(16,185,129,.95);color:#fff;padding:13px 22px;border-radius:10px;font-family:Cairo,sans-serif;font-size:.9rem;font-weight:700;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.4);text-align:center;direction:rtl;animation:fadeInUp .4s ease;';
+  d.innerHTML='🤲 استغفر الله العظيم وأتوب إليه';
+  document.body.appendChild(d);
+  setTimeout(function(){d.style.opacity='0';d.style.transition='opacity .5s';setTimeout(function(){if(d.parentNode)d.parentNode.removeChild(d);},500);},4000);
+}
+// أول مرة بعد 10 دقائق
+setInterval(showIstighfar, 10*60*1000);
+// CSS للأنيميشن
+var styleEl=document.createElement('style');
+styleEl.textContent='@keyframes fadeInUp{from{opacity:0;transform:translateX(-50%) translateY(20px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}';
+document.head.appendChild(styleEl);
+
+// ── جلب أوقات الصلاة ──
+(function(){
+  try{
+    var h=new Date();
+    // التاريخ الهجري
+    try{
+      var hijri=new Intl.DateTimeFormat('ar-SA-u-ca-islamic',{day:'numeric',month:'long',year:'numeric'}).format(h);
+      var el=document.getElementById('hijri-date');
+      if(el)el.textContent=hijri;
+    }catch(e){}
+    // جلب أوقات الصلاة من API
+    var today=h.getFullYear()+'-'+(h.getMonth()+1)+'-'+h.getDate();
+    fetch('https://api.aladhan.com/v1/timingsByCity?city=Sidi+Bel+Abbes&country=Algeria&method=2')
+      .then(function(r){return r.json();})
+      .then(function(data){
+        var t=data.data.timings;
+        var ids={Sunrise:'pt-shuruq',Dhuhr:'pt-zuhr',Asr:'pt-asr',Maghrib:'pt-maghrib',Isha:'pt-isha'};
+        Object.keys(ids).forEach(function(k){
+          var el=document.getElementById(ids[k]);
+          if(el && t[k])el.textContent=t[k];
+        });
+      }).catch(function(){});
+  }catch(e){}
+})();
+
 try{sV();}catch(e){}
 </script>
 </body>
 </html>
-
+ 
